@@ -2,6 +2,12 @@ import React from "react";
 import "./StudentCard.css";
 
 const StudentCard = ({ student }) => {
+
+  let scheduleInterview = () => {
+    // add to event data in db
+    // 
+  }
+
   return (
     <div className="student-card">
       <h3>Name: {student.name}</h3>
@@ -18,9 +24,7 @@ const StudentCard = ({ student }) => {
         </p>
       ) : (
         <button
-          onClick={() => {
-            console.log("interview scheduled");
-          }}
+          onClick={ scheduleInterview() }
         >
           Schedule Interview
         </button>
