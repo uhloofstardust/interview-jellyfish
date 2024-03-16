@@ -4,6 +4,24 @@ import StudentData from "./StudentData/StudentData";
 import EventDetails from "./EventDetails";
 // import "Calendar.css"
 
+let getCandidateData = () => {
+  // retrieves candidate list data from database
+  // db common for all 
+  // return as array of objects
+  //   {
+  //     name: string;
+  //     email: string;
+  //     resume: string;
+  //     interviewScheduled: boolean;
+  //     interviewDate?: undefined;
+  //   })[]
+}
+
+let getCalendarEvents = () => {
+  // retrieve event data from database 
+  // unique for each interviewer
+}
+
 const Calendar = () => {
   let sampledata = [
     {
@@ -20,6 +38,9 @@ const Calendar = () => {
       interviewScheduled: false,
     },
   ];
+
+  // let candidateData = getCandidateData()
+
   let sampleCalendarEvents = [
     {
       eventName: "Interview",
@@ -34,6 +55,8 @@ const Calendar = () => {
       when: "2024-03-20T10:00:00",
     },
   ];
+
+  // let eventData = getCalendarEvents()
 
   return (
     <>
