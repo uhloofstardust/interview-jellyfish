@@ -1,0 +1,9 @@
+.interviewer-heading {
+    font-weight: bold;
+}
+
+.interviewer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

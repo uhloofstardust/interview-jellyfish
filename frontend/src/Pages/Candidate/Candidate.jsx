@@ -1,9 +1,26 @@
-import React from 'react'
+import React from "react";
+import Button2 from "../../components/Button2";
+import JellyLogo from "../../components/JellyLogo";
+import { Link } from "react-router-dom";
+import "./Candidate.css";
 
 const Candidate = () => {
   return (
-    <div>Candidate</div>
-  )
-}
+    <>  
+      <div className="candidate-container">
+        <div className="logo">
+          <JellyLogo />
+        </div>
+        <h2 className="candidate-heading">Welcome</h2>
+        <div className="">
 
-export default Candidate
+        </div>
+        <div>
+          <Button2 textContent={"add details"} action={() => {}} />
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Candidate;

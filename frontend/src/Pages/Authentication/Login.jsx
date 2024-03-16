@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Facebook, GitHub, Google } from "@mui/icons-material";
 import { getDatabase, ref, child, onValue, get } from "firebase/database";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
@@ -28,9 +27,9 @@ const LoginForm = ({ isLogin, setLogin }) => {
         if (snapshot.exists()) {
           console.log(snapshot.val());
           if (snapshot.val().role === "Candidate") {
-            navigate(`/${id}/candidates`);
+            navigate(`/${id}/Candidate`);
           } else {
-            navigate(`/${id}/interviewer`);
+            navigate(`/${id}/Interviewer`);
           }
         } else {
           console.log("No data available");
