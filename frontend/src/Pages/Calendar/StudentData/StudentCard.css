@@ -4,7 +4,8 @@
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
-    width: 23%;
+    margin-top: 20px;
+    /* width: 23%; */
   }
   
   .student-card h3 {

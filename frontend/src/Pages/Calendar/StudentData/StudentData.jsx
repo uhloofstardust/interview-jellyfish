@@ -1,13 +1,16 @@
 import React from "react";
 import StudentCard from "./StudentCard";
+import "./StudentData.css"
 
 const StudentData = ({ studentData }) => {
   return (
-    <div>
-      <h2>Student Data</h2>
-      {studentData.map((student, index) => (
-        <StudentCard key={index} student={student} />
-      ))}
+    <div className="student-data">
+      <h2 className="student-data-heading">Student Data</h2>
+      <div>
+        {studentData.map((student, index) => (
+          <StudentCard key={index} student={student} />
+        ))}
+      </div>
     </div>
   );
 };

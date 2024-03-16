@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import CalendarGrid from "./CalendarGrid";
 import StudentData from "./StudentData/StudentData";
 import EventDetails from "./EventDetails";
-// import "Calendar.css"
+import "./Calendar.css"
+import JellyLogo from "../../components/JellyLogo"
 
 let getCandidateData = () => {
   // retrieves candidate list data from database
-  // db common for all 
+  // db common for all
   // return as array of objects
   //   {
   //     name: string;
@@ -15,12 +16,12 @@ let getCandidateData = () => {
   //     interviewScheduled: boolean;
   //     interviewDate?: undefined;
   //   })[]
-}
+};
 
 let getCalendarEvents = () => {
-  // retrieve event data from database 
+  // retrieve event data from database
   // unique for each interviewer
-}
+};
 
 const Calendar = () => {
   let sampledata = [
@@ -59,16 +60,20 @@ const Calendar = () => {
   // let eventData = getCalendarEvents()
 
   return (
-    <>
-      {/* month 0: jan, 1: feb, and so on */}
-      {/* year like year */}
-      <CalendarGrid
-        month={2}
-        year={2024}
-        calendarEvents={sampleCalendarEvents}
-      />
-      <StudentData studentData={sampledata} />
-    </>
+    <div className="calendar-data-container">
+      <div className="logo">
+        <JellyLogo />
+      </div>
+      <div className="calendar-student-grid">
+        <CalendarGrid
+          month={2}
+          year={2024}
+          calendarEvents={sampleCalendarEvents}
+          className="calendar-grid"
+        />
+        <StudentData studentData={sampledata} className="student-data" />
+      </div>
+    </div>
   );
 };
 

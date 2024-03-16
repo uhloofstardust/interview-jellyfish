@@ -1,0 +1,10 @@
+.student-data {
+    width: auto;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+}
+
+.student-data-heading {
+    font-weight: bold;
+}

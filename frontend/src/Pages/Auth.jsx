@@ -1,6 +1,6 @@
 // import React, { useState } from "react";
-// import SignUpForm from "./Authenctication/Signup";
-// import LoginForm from "./Authenctication/Login";
+// import SignUpForm from "./Authentication/Signup";
+// import LoginForm from "./Authentication/Login";
 
 
 // const Auth = () => {

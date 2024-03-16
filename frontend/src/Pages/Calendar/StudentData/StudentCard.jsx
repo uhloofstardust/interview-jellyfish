@@ -1,12 +1,12 @@
 import React from "react";
 import "./StudentCard.css";
+import Button2 from "../../../components/Button2";
 
 const StudentCard = ({ student }) => {
-
   let scheduleInterview = () => {
     // add to event data in db
-    // 
-  }
+    //
+  };
 
   return (
     <div className="student-card">
@@ -23,11 +23,7 @@ const StudentCard = ({ student }) => {
           Interview Date: {student.interviewDate}
         </p>
       ) : (
-        <button
-          onClick={ scheduleInterview() }
-        >
-          Schedule Interview
-        </button>
+        <Button2 textContent={"schedule"} action={scheduleInterview} />
       )}
     </div>
   );

@@ -1,0 +1,19 @@
+.calendar-data-container {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center; 
+  /* height: 90vh;  */
+}
+
+.calendar-student-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  grid-gap: 10px; 
+  width: 80%;
+  margin: 10px;
+}
+
+.calendar-grid {
+  grid-column: 1 / span 2; 
+}
+
