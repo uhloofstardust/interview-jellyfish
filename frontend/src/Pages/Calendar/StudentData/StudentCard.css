@@ -1,0 +1,47 @@
+.student-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 23%;
+  }
+  
+  .student-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .student-card p {
+    margin: 0;
+    margin-bottom: 5px;
+  }
+  
+  .student-card a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .student-card a:hover {
+    text-decoration: underline;
+  }
+  
+  .interview-date {
+    font-style: italic;
+    color: #888;
+  }
+  
+  .student-card button {
+    padding: 8px 16px;
+    background-color: #290631;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .student-card button:hover {
+    background-color: #49194f;
+  }
+  

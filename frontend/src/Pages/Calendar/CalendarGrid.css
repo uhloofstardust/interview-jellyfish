@@ -1,0 +1,72 @@
+.calendar {
+  font-family: Arial, sans-serif;
+  background-color: rgb(251, 237, 255);
+  border-radius: 8px;
+  padding: 2em;
+  margin: 2em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.calendar h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #333;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-gap: 10px;
+}
+
+.calendar-day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  border-radius: 9%;
+  cursor: pointer;
+  margin: 1px;
+}
+
+.calendar-day.empty {
+  visibility: hidden;
+}
+
+.calendar-day.event {
+  background-color: #d15858;
+}
+
+.calendar-day.selected {
+  background-color: #854c7a;
+  color: #fff;
+}
+
+.calendar-day:hover {
+  background-color: #ad639e;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  text-align: center;
+  margin-top: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.weekday {
+  font-weight: bold;
+  color: #555;
+  text-transform: uppercase;
+  padding: 10px;
+}
+
+.weekday:first-child {
+  border-left: none;
+}
+
+.weekday:last-child {
+  border-right: none;
+}
