@@ -23,5 +23,9 @@ input {
 .no-account-action {
   display: flex;
   justify-content: center;
-  margin: 20px;
+  margin: 10px;
+}
+
+.role-dropdown {
+  margin: 2px;
 }
