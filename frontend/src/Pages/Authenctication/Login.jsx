@@ -13,7 +13,7 @@ const LoginForm = ({ isLogin, setLogin }) => {
   const navigate = useNavigate();
 
   const handleSignUpClick = () => {
-    setLogin(true);
+    navigate("/signup");
   };
 
   const getUser = async (id) => {
@@ -64,12 +64,7 @@ const LoginForm = ({ isLogin, setLogin }) => {
       console.log("User is Logged In: ", user.uid);
 
       await getUser(user.uid);
-      alert("Login Suceessfull")
-
-   
-     
-        
-      
+      alert("Login Suceessfull");
     } catch (error) {
       console.error("Login Error:", error.message);
       alert("Login failed. Please check your credentials.");

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Facebook, GitHub, Google } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
+import { getAuth } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { getDatabase, ref, set } from "firebase/database"; // Import database
 import { app } from "../firebase/firebase";
 
 const auth = getAuth(app);
+const database = getDatabase(app); // Initialize database
 
 const SignUpForm = ({ isLogin, setLogin }) => {
   const navigate = useNavigate();
@@ -24,31 +26,40 @@ const SignUpForm = ({ isLogin, setLogin }) => {
     navigate("/");
   };
 
-  const SignUp = () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(async (user) => {
-        console.log(user);
-        alert("Account is Created ");
+ 
 
-        writeUserData(user.user?.uid, name, email, password, role);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode + " " + errorMessage);
-        alert(error)
-      });
-
-    function writeUserData(userId, name, email, password, role) {
-      const db = getDatabase();
-      set(ref(db,"users/" + userId), {
+  const SignUp = async () => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  
+      // Send email verification
+      await sendEmailVerification(userCredential.user);
+  
+      // Alert user to check their email for verification
+      alert("Account is Created. Please check your email for verification.");
+  
+      // Write user data to the database
+      await writeUserData(userCredential.user.uid);
+    } catch (error) {
+      console.error(error.code, error.message);
+      alert(error.message);
+    }
+  };
+  
+  const writeUserData = async (userId) => {
+    try {
+      await set(ref(database, 'users/' + userId), {
         name: name,
         email: email,
         password: password,
         role: role,
       });
+    } catch (error) {
+      console.error(error.code, error.message);
+      alert(error.message);
     }
   };
+  
 
   return (
     <div className="bg-blue-400 text-white rounded-2xl shadow-2xl  flex flex-col w-full  md:w-1/3 items-center max-w-4xl transition duration-1000 ease-in">
@@ -127,7 +138,7 @@ const SignUpForm = ({ isLogin, setLogin }) => {
 
         <button
           className="rounded-2xl m-4 text-blue-400 bg-white w-3/5 px-4 py-2 shadow-md hover:text-white hover:bg-blue-400 transition duration-200 ease-in"
-          onClick={SignUp}
+          onClick={SignUp} // Call SignUp directly
         >
           Sign Up
         </button>
