@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./CalendarGrid.css";
 
+import { DateContext } from "../context/DataContext";
 const CalendarGrid = ({ month, year, calendarEvents }) => {
-  const [selectedDate, setSelectedDate] = useState(new Date(year, month, 1));
+  const selectedDateContext = useContext(DateContext);
+  const selectedDate = selectedDateContext.selectedDate;
+  const setSelectedDate = selectedDateContext.setSelectedDate;
+
   const [selectedEventDetails, setSelectedEventDetails] = useState(null);
   const handleDateClick = (date) => {
     setSelectedDate(date);
+
     const eventDetails = findEventDetails(date, calendarEvents);
     setSelectedEventDetails(eventDetails);
   };

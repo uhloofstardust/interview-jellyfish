@@ -1,46 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CalendarGrid from "./CalendarGrid";
 import StudentData from "./StudentData/StudentData";
 import EventDetails from "./EventDetails";
-import "./Calendar.css"
-import JellyLogo from "../../components/JellyLogo"
+import "./Calendar.css";
+import JellyLogo from "../../components/JellyLogo";
+import { getDatabase, ref, onValue } from "firebase/database";
 
-let getCandidateData = () => {
-  // retrieves candidate list data from database
-  // db common for all
-  // return as array of objects
-  //   {
-  //     name: string;
-  //     email: string;
-  //     resume: string;
-  //     interviewScheduled: boolean;
-  //     interviewDate?: undefined;
-  //   })[]
-};
-
-let getCalendarEvents = () => {
-  // retrieve event data from database
-  // unique for each interviewer
-};
+const db = getDatabase();
 
 const Calendar = () => {
-  let sampledata = [
-    {
-      name: "Sanved",
-      email: "test@test",
-      resume: "resume.pdf",
-      interviewScheduled: true,
-      interviewDate: "2003-12-19T10:00:00",
-    },
-    {
-      name: "Sanved",
-      email: "test@test",
-      resume: "resume.pdf",
-      interviewScheduled: false,
-    },
-  ];
+  const [candidateData, setCandidate] = useState([]);
 
-  // let candidateData = getCandidateData()
+  useEffect(() => {
+    const getCandidateData = async () => {
+      const starCountRef = ref(db, "Skilled_Candidate");
+      onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          setCandidate(Object.values(data));
+        }
+      });
+    };
+    getCandidateData();
+  }, []); // Empty dependency array to fetch data only once on component mount
 
   let sampleCalendarEvents = [
     {
@@ -57,8 +39,6 @@ const Calendar = () => {
     },
   ];
 
-  // let eventData = getCalendarEvents()
-
   return (
     <div className="calendar-data-container">
       <div className="logo">
@@ -71,7 +51,7 @@ const Calendar = () => {
           calendarEvents={sampleCalendarEvents}
           className="calendar-grid"
         />
-        <StudentData studentData={sampledata} className="student-data" />
+        <StudentData studentData={candidateData} className="student-data" />
       </div>
     </div>
   );
