@@ -9,6 +9,7 @@ import { getDatabase, ref, set } from "firebase/database"; // Import database
 import { app } from "../firebase/firebase";
 import Button2 from "../../components/Button2";
 import "./Login.css";
+import JellyLogo from "../../components/JellyLogo";
 
 const auth = getAuth(app);
 const database = getDatabase(app); // Initialize database
@@ -65,6 +66,9 @@ const SignUpForm = ({ isLogin, setLogin }) => {
 
   return (
     <div className="login-box">
+      <div className="logo">
+        <JellyLogo />
+      </div>
       <h3 className="login-heading">Sign up</h3>
       <div className="flex flex-col items-center justify-center">
         <input
@@ -132,6 +136,11 @@ const SignUpForm = ({ isLogin, setLogin }) => {
       <div className="no-account-action">
         <Link to={"/login"}>Already have an account? Click here</Link>
       </div>
+
+      <div className="no-account-action">
+        <Link to={"/"}>go back</Link>
+      </div>
+
     </div>
   );
 };

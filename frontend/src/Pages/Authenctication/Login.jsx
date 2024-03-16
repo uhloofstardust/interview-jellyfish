@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { app } from "../firebase/firebase";
 import "./Login.css";
 import Button2 from "../../components/Button2";
+import JellyLogo from "../../components/JellyLogo";
 
 const auth = getAuth(app);
 
@@ -72,7 +73,12 @@ const LoginForm = ({ isLogin, setLogin }) => {
   };
 
   return (
+    <>
+    
     <div className="login-box">
+    <div className="logo">
+        <JellyLogo />
+    </div>
       <h2 className="login-heading">Log in</h2>
       <div className="flex flex-col items-center justify-center">
         <input
@@ -82,7 +88,7 @@ const LoginForm = ({ isLogin, setLogin }) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-        ></input>
+          ></input>
         <input
           type="password"
           className="input text-input"
@@ -90,16 +96,23 @@ const LoginForm = ({ isLogin, setLogin }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-        ></input>
+          ></input>
         <div className="login-btn">
           <Button2 textContent={"Log in"} action={loginUser} />
         </div>
+        
       </div>
 
       <div className="no-account-action">
         <Link to={"/signup"}>Don't have an account? Click here</Link>
       </div>
+
+      <div className="no-account-action">
+        <Link to={"/"}>go back</Link>
+      </div>
+
     </div>
+  </>
   );
 };
 
