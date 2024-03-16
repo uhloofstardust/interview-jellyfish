@@ -1,0 +1,19 @@
+.button1 {
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 3px;
+  border-style: none;
+  box-shadow: rgba(143, 83, 255, 0.552) -1px -1px 5px, rgba(253, 252, 255, 0.4) 1px 2px 2px,rgba(255, 189, 243, 0.324) 1px 1px 2px -1px,rgb(222, 186, 255) -0.5px -1px 1px inset;
+  cursor: pointer;
+  font-family: 'Lucida Console', monospace;
+  padding: 1em;
+  position: relative;
+  touch-action: manipulation;
+  margin: auto 10px;
+}
+
+
+
+.button1:active {
+  transform: scale3d(1.02, 1.02, -1.05) translateY(1px);
+}

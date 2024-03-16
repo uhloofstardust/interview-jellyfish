@@ -7,6 +7,7 @@ import SignUpForm from './Pages/Authenctication/Signup'
 import Interviewer from './Pages/Interviewer/Interviewer'
 import Candidate from './Pages/Candidate/Candidate'
 import Calendar from './Pages/Calendar/Calendar'
+import Dashboard from './Pages/Dashboard'
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
   <BrowserRouter>
     <Routes>
       <Route path='/assesment' element={<CodeExecution/>} />
-      <Route path="/" element={<Home/>}/>
+      <Route path="/" element={<Dashboard />}/>
       <Route path="/login" element= {<LoginForm/>}></Route>
       <Route path='/signup'element={<SignUpForm/>}></Route>
       <Route path='/:id/interviewer' element={<Interviewer/>}></Route>

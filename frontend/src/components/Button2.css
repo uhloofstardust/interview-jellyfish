@@ -1,0 +1,28 @@
+.button2 {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.3rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-weight: 600;
+  justify-content: center;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  margin: 10px
+}
+
+.button2:hover,
+.button2:focus {
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.button2:hover {
+  transform: translateY(-1px);
+  border: none;
+}

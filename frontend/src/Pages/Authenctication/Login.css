@@ -1,0 +1,27 @@
+.login-box {
+  border-radius: 12px;
+  padding: 10px 32%;
+}
+
+.login-heading {
+  font-weight: bold;
+}
+
+input {
+}
+
+.text-input {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 6px;
+}
+
+.login-btn {
+  margin: 20px;
+}
+
+.no-account-action {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
