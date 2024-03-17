@@ -12,13 +12,14 @@ const StudentCard = ({ student }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   // const dateString = selectedDate.toISOString();
 
-  let scheduleInterview = (selectedDate) => {
+  let scheduleInterview = async(selectedDate) => {
     const db = getDatabase();
     const newData = {
       interviewDate: selectedDate,
       interviewScheduled: "true",
     };
-
+   
+    await addEventData(db,student,selectedDate);
     const userRef = ref(db, "Skilled_Candidate/" + student.refId);
     update(userRef, newData) // Use update instead of set
       .then(function () {
@@ -28,6 +29,25 @@ const StudentCard = ({ student }) => {
         console.error("Error updating interview data: ", error);
       });
   };
+
+
+
+  let addEventData =(db,student,selectedDate)=>{
+
+    const newData ={
+       with : student.fullName,
+       start : selectedDate,
+
+    }
+    const userRef = ref(db, "Event_data/"+student.refId);
+    set(userRef, newData) 
+      .then(function () {
+        console.log("Interview data updated successfully!");
+      })
+      .catch(function (error) {
+        console.error("Error updating interview data: ", error);
+      });
+  }
 
   return (
     <div className="student-card">
