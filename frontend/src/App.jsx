@@ -8,7 +8,7 @@ import Candidate from './Pages/Candidate/Candidate'
 import Calendar from './Pages/Calendar/Calendar'
 import Dashboard from './Pages/Dashboard'
 import DateProvider from './Pages/context/DataContext' // Import DateProvider instead of DateContext
-
+import CodeEditor from './CodeEditor/App.jsx'
 function App() {
   return (
     <>
@@ -20,6 +20,7 @@ function App() {
           <Route path='/signup' element={<SignUpForm />} />
           <Route path='/:id/interviewer' element={<Interviewer />} />
           <Route path='/:id/candidate' element={<Candidate />} />
+          <Route path='/codeEditor' element={<CodeEditor/>}/>
           {/* Wrap the Calendar component with DateProvider */}
           <Route path='/calendar' element={
             <DateProvider>
