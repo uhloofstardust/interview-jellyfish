@@ -1,22 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./StudentCard.css";
 import Button2 from "../../../components/Button2";
 import { getDatabase, push, ref, set, update } from "firebase/database";
 import { DateContext } from "../../context/DataContext";
+import ResumePDF from "./ResumePdf";
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
 
 const StudentCard = ({ student }) => {
-  let selectedDate = useContext(DateContext);
-   selectedDate = new Date("Sat Mar 09 2024 00:00:00 GMT+0530 (India Standard Time)");
-const dateString = selectedDate.toISOString();
+  // let selectedDate = useContext(DateContext);
+  const [selectedDate, setSelectedDate] = useState(null);
+  // const dateString = selectedDate.toISOString();
 
-  let scheduleInterview = () => {
+  let scheduleInterview = (selectedDate) => {
     const db = getDatabase();
     const newData = {
-      interviewDate: dateString,
-      interviewScheduled:"true"
+      interviewDate: selectedDate,
+      interviewScheduled: "true",
     };
-   
-    const userRef = ref(db, "Skilled_Candidate/" + student.refId );
+
+    const userRef = ref(db, "Skilled_Candidate/" + student.refId);
     update(userRef, newData) // Use update instead of set
       .then(function () {
         console.log("Interview data updated successfully!");
@@ -24,7 +27,6 @@ const dateString = selectedDate.toISOString();
       .catch(function (error) {
         console.error("Error updating interview data: ", error);
       });
-
   };
 
   return (
@@ -33,16 +35,35 @@ const dateString = selectedDate.toISOString();
       <p>Email: {student.email}</p>
       <p>
         Resume:{" "}
-        <a href={student.resume} target="_blank" rel="noopener noreferrer">
+        <a
+          href={
+            <ResumePDF
+              name={student.fullName}
+              skills={student.skills}
+              education={student.education}
+              misc={student.additionalInfo}
+            />
+          }
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Download
         </a>
       </p>
-      {student.interviewScheduled ? (
+      {student.interviewScheduled == "true" ? (
         <p className="interview-date">
           Interview Date: {student.interviewDate}
         </p>
       ) : (
-        <Button2 textContent={"schedule"} action={scheduleInterview} />
+        <>
+          <input
+            type="date"
+            id="interviewDate"
+            name="interviewDate"
+            onChange={(e) => setSelectedDate(e.target.value)} 
+          />
+          <Button2 textContent={"schedule"} action={() => {scheduleInterview(selectedDate)}} />
+        </>
       )}
     </div>
   );
